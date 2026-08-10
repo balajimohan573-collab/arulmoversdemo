@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&family=Bebas+Neue&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-bebas: "Bebas Neue", sans-serif;
+
+  --color-primary: #E5A900; /* JCB Yellow/Orange */
+  --color-primary-hover: #CC9600;
+  --color-primary-light: #FFF6DE;
+  --color-charcoal: #121212;
+  --color-charcoal-light: #1E1E1E;
+  --color-charcoal-medium: #2A2A2A;
+  --color-offwhite: #F9FAFB;
+  --color-gray-dark: #3F3F46;
+
+  --animate-scroll: scroll 40s linear infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: var(--color-offwhite);
+    color: var(--color-charcoal);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #121212;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #E5A900;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #CC9600;
+  }
+}
+
+@layer utilities {
+  /* Industrial Blueprint Pattern */
+  .bg-grid-blueprint {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(229, 169, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(229, 169, 0, 0.05) 1px, transparent 1px);
+  }
+
+  .bg-grid-white {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  }
+
+  /* Diagonal Stripe Background (Industrial style) */
+  .bg-stripes {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      #E5A900,
+      #E5A900 10px,
+      #121212 10px,
+      #121212 20px
+    );
+  }
+
+  .bg-stripes-light {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(229, 169, 0, 0.1),
+      rgba(229, 169, 0, 0.1) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  }
+
+  /* Custom glassmorphism cards */
+  .glass-card {
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(229, 169, 0, 0.15);
+  }
+
+  /* Subtle noise texture overlay */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  }
+
+  /* Focus ring utility */
+  .focus-ring {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary);
+  }
+}
